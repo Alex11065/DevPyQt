@@ -56,8 +56,8 @@ class Window(QtWidgets.QWidget):
             self.process.readyReadStandardError.connect(self.handleError)
             self.process.stateChanged.connect(self.handleStateChange)
             self.process.finished.connect(self.processFinished)
-            self.process.start("python", ["c_other_py_script.py"])  # запуск py скрипта в отдельном потоке
-            # self.process.start("tracert", ["8.8.8.8"])  # запуск команды ping в отдельном потоке
+            # self.process.start("python", ["c_other_py_script.py"])  # запуск py скрипта в отдельном потоке
+            self.process.start("tracert", ["mail.ru"])  # запуск команды ping в отдельном потоке
 
     def handleError(self) -> None:
         """

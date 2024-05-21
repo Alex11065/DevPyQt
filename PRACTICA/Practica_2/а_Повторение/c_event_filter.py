@@ -7,6 +7,7 @@
 используя html - теги, покрасить разные части текста на нём в разные цвета
 (красивая - красным, кнопка - синим)
 """
+import sys
 
 from PySide6 import QtWidgets, QtCore, QtGui
 
@@ -22,13 +23,14 @@ class Window(QtWidgets.QWidget):
         self.setFixedSize(300, 300)
         self.setMouseTracking(True)
 
-        self.label = QtWidgets.QLabel('Красивая кнопка')
+        self.label = QtWidgets.QLabel('<h1>Красивая кнопка</h>')
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
         laout = QtWidgets.QVBoxLayout()
         laout.addWidget(self.label)
 
         self.setLayout(laout)
+
 
 
         # self.label = QtWidgets.QLabel(self)

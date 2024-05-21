@@ -15,7 +15,7 @@
   (пароль можно показать в терминале в захешированном виде)
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore
 from dialog import Ui_Dialog
 
 
@@ -39,6 +39,7 @@ class Window(QtWidgets.QWidget):
 
     def __initSignals(self):
         self.__pushButton.clicked.connect(self.open_child_window)
+        self.child_window.custom_signal.connect(self.textSignal)
 
 
     def open_child_window(self):
@@ -46,12 +47,26 @@ class Window(QtWidgets.QWidget):
         self.child_window.show()
 
 
+    def textSignal(self, text):
+        self.label.setText(text)
+
+
+
 class OtherWindow(QtWidgets.QWidget):
+    custom_signal = QtCore.Signal(str)
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+
+    def initSignalsOther(self):
+        self.ui.pushButton.clicked.connect(self.changedLineEditText)
+
+    def changedLineEditText(self):
+        self.custom_signal.emit(self.lineEdit.text())
+
+
 
 
 if __name__ == "__main__":

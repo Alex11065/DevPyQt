@@ -9,6 +9,7 @@
 """
 
 from PySide6 import QtWidgets
+from PRACTICA.Practica_2.ui.form_a import Ui_Form
 
 
 class Window(QtWidgets.QWidget):
